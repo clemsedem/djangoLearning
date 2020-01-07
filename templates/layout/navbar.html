@@ -1,0 +1,26 @@
+ <div class="navbar-fixed">
+     <nav class="purple lighten-1">
+         <div class="nav-wrapper">
+             <a href="#" data-target="mobile-demo" class="sidenav-trigger show-on-large "><i class="material-icons">menu</i></a>
+             <a href="/" class="brand-logo">Address Book</a>
+             <ul id="nav-mobile" class="right hide-on-med-and-down">
+                 <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+             </ul>
+         </div>
+      </nav>
+ </div>
+{# Nav dropdown#}
+ <ul id="dropdown1" class="dropdown-content">
+     <li><a href="#!">Profile</a></li>
+     <li class="divider"></li>
+     <li><a href="#!">Logout</a></li>
+     <li class="divider"></li>
+ </ul>
+
+{# Side Bar#}
+ <ul class="sidenav purple lighten-4" id="mobile-demo">
+    <li>
+        <a href="{% url 'region_index' %}" class="nm">Regions</a>
+    </li>
+ </ul>
+
