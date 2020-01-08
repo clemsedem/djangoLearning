@@ -50,7 +50,7 @@
                                     {% endif %}
                                 </td>
                                 <td>{{ region.created_at|date:'Y-m-d H:i' }}</td>
-                                <td>Cities</td>
+                                <td><a href="{% url 'index_cities'%}?region={{ region.ref }}">Cities</a></td>
                                 <td>
                                     <a href="{% url 'edit_region' region.ref %}"> Edit</a>
                                 </td>
