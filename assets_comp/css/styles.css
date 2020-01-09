@@ -5,12 +5,16 @@
 /*.modal { width: 75% !important ; height: 75% !important ; }*/
 
 
-h5{
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 40px;
-}
+/*h5{*/
+/*    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+/*    font-size: 40px;*/
+/*}*/
 
 
-#resp{
+/*#resp{*/
+/*    color: red;*/
+/*}*/
+
+ul.errorlist{
     color: red;
 }
