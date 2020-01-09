@@ -1,0 +1,35 @@
+{% extends "layout/application.html" %}
+
+{% block content %}
+    <div id="id01" class="w3-modal w3-card w3-margin-top" style="display: block">
+        <div class="w3-modal-content w3-animate-top" style="width: 25%;" >
+            <header class="w3-container red lighten-4 w3-padding w3-margin-bottom">
+                <h5 class="center">Edit Suburb</h5>
+            </header>
+{#            {{ ref }}#}
+{#            action="{% url 'create_city' %}"#}
+            <form  method="post" id="form">
+                {% csrf_token %}
+                <div class="w3-container">
+                    <div class="section w3-padding">
+                        <div class="input-field ">
+{#                            <input type="text" name="city" value="{{ city }}" readonly hidden>#}
+{#                            <input type="text" name="region" value="{{ region }}" readonly hidden>#}
+                            {{ form.suburb_name.label_tag }}
+                            {{ form.suburb_name }}
+                            <span>{{ form.suburb_name.errors }}</span>
+                        </div>
+                    </div>
+                </div>
+                <footer class="modal-footer section container">
+{#                    <span class="waves-effect waves-light btn black white-text" onclick="document.getElementById('id01').style.display='none'">#}
+{#                        Cancel#}
+{#                    </span>#}
+                    <a href="{% url 'index_suburb' %}?locality={{ locality }}&city={{ city }}&region={{ region }}" class="waves-effect waves-light btn black white-text">Cancel</a>
+                    <button type="submit" class="btn  waves-effect waves-light blue submit">Submit</button>
+                </footer>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+

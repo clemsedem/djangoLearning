@@ -14,7 +14,9 @@
                     <div class="section w3-padding">
                         <div class="input-field ">
                             <input type="text" name="ref" value="{{ ref }}" readonly hidden>
-                            {{ form }}
+                            {{ form.city_name.label_tag }}
+                            {{ form.city_name }}
+                            <span>{{ form.city_name.errors }}</span>
                         </div>
                     </div>
                 </div>

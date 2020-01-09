@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-sm-12 col-md-8">
             <div class="section">
-                 <h5 class="center-align">Cities for {{ region }}</h5>
+                 <h5 class="center-align">Cities for {{ region|title }}</h5>
                 <a href="{% url 'new_city' %}?region={{ ref }}" class="w3-padding btn btn-small left purple lighten-3 white-text waves-effect waves-light" id="new">New</a>
                 <a href="{% url 'region_index' %}" class="w3-padding btn btn-small right black lighten-3 white-text waves-effect waves-light" >Back</a>
 {#                <button#}
@@ -51,17 +51,17 @@
                                     {% endif %}
                                 </td>
                                 <td>{{ city.created_at|date:'Y-m-d H:i' }}</td>
-{#                                <td><a href="{% url 'index_cities'%}?region={{ region.ref }}">Cities</a></td>#}
+                                <td><a href="{% url 'index_localities'%}?city={{ city.ref }}&region={{ ref }}">Localities</a></td>
                                 <td>
-{#                                    <a href="{% url 'edit_region' region.ref %}"> Edit</a>#}
+                                    <a href="{% url 'edit_city' city.ref %}?region={{ ref }}"> Edit</a>
                                 </td>
 
                                 <td>
-{#                                    <a#}
-{#                                        href="{% url 'region_delete' region.ref %}"#}
-{#                                        onclick="return confirm('Do you want to continue?')"#}
-{#                                    > Delete#}
-{#                                    </a>#}
+                                    <a
+                                        href="{% url 'delete_city' city.ref %}?region={{ ref }}"
+                                        onclick="return confirm('Do you want to continue?')"
+                                    > Delete
+                                    </a>
                                 </td>
                                 </tr>
                             {% endfor %}

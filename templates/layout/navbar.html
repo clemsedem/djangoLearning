@@ -2,7 +2,7 @@
      <nav class="purple lighten-1">
          <div class="nav-wrapper">
              <a href="#" data-target="mobile-demo" class="sidenav-trigger show-on-large "><i class="material-icons">menu</i></a>
-             <a href="/" class="brand-logo">Address Book</a>
+{#             <a href="/" class="brand-logo text-uppercase">Address Book</a>#}
              <ul id="nav-mobile" class="right hide-on-med-and-down">
                  <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
              </ul>
@@ -13,14 +13,43 @@
  <ul id="dropdown1" class="dropdown-content">
      <li><a href="#!">Profile</a></li>
      <li class="divider"></li>
-     <li><a href="#!">Logout</a></li>
+     <li><a href="#!">Logout</a></li>￼ NEW
+
+S/N	Region	Status	Date	Actions
+1	Greater Accra	Active	2020-01-08 13:
      <li class="divider"></li>
  </ul>
 
 {# Side Bar#}
- <ul class="sidenav purple lighten-4" id="mobile-demo">
-    <li>
-        <a href="{% url 'region_index' %}" class="nm">Regions</a>
-    </li>
- </ul>
+ <div class="sidenav purple darken-2 " id="mobile-demo" >
+     <div class="w3-padding w3-khaki text-uppercase w3-card-4" id="sidenav-header">
+         <h5 class="">Address Book</h5>
+     </div>
+    <div class="w3-margin clearfix w3-clear "></div>
+     <div class="w3-display-container">
+         <div class="w3-display-middle">
+             OKAY
+         </div>
+     </div>
+    <div class="w3-margin clearfix w3-clear "></div>
+     <div class="nav-wrapper w3-margin-top" >
+         <ul class="w3-ul ">
+             <li >
+                 <a href="{% url 'region_index' %}" class="nm white-text w3-large">
+                     <i class="material-icons white-text">home</i>
+                     Locations
+                 </a>
+             </li>
+         </ul>
+     </div>
+ </div>
+
+
+ <style>
+     #sidenav-header{
+         min-height: 7% !important;
+     }
+     #sidenav-header h5{
+     }
+ </style>
 

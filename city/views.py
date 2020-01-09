@@ -4,6 +4,8 @@ from .forms import CityForm
 from region.models import Region
 from django.contrib import messages
 
+
+
 def index(request):
     ref = request.GET['region']
     print('path', request.get_full_path())
@@ -41,30 +43,53 @@ def new(request):
     }
     return render(request, 'city/new.html', context)
 
-    # ref = request.GET['region']
-    # form = CityForm()
-    # context = {
-    #     'ref': ref,
-    #     'form': form,
-    # }
-    # return render(request, 'city/new.html', context)
+
+"""
+This method deletes a city
+"""
 
 
-def create(request):
-    form_data = CityForm(request.POST)
-    ref = request.POST['ref']
-    if form_data.is_valid():
-        city = form_data.save(commit=False)
-        city.region = Region.objects.get(ref=ref)
-        city.save()
-        messages.add_message(request, messages.SUCCESS, 'City added successfully')
-        return redirect('/cities/?region='+ref)
+def delete(request, ref):
+    region = request.GET['region']
+    City.objects.filter(ref=ref).update(status=False)
+    messages.add_message(request, messages.SUCCESS, 'City removed successfully')
+    return redirect('/cities/?region=' + region)
 
-    form = CityForm()
+
+def edit(request, ref):
+    region = request.GET['region']
+    city = City.objects.get(ref=ref)
+
+    if request.method == "POST":
+        form = CityForm(request.POST, instance=city)
+        print(form.data['city_name'])
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.SUCCESS, 'City updated successfully')
+            return redirect('/cities/?region=' + region)
+    else:
+        form = CityForm(instance=city)
+
     context = {
-        'ref': ref,
+        'ref': region,
         'form': form,
     }
-    return render(request, 'city/new.html', context)
+    return render(request, 'city/edit.html', context)
 
 
+# def create(request):
+#     form_data = CityForm(request.POST)
+#     ref = request.POST['ref']
+#     if form_data.is_valid():
+#         city = form_data.save(commit=False)
+#         city.region = Region.objects.get(ref=ref)
+#         city.save()
+#         messages.add_message(request, messages.SUCCESS, 'City added successfully')
+#         return redirect('/cities/?region='+ref)
+#
+#     form = CityForm()
+#     context = {
+#         'ref': ref,
+#         'form': form,
+#     }
+#     return render(request, 'city/new.html', context)

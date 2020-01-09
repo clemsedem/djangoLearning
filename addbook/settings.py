@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'region',
     'city',
     'locality',
+    'suburb',
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,91 @@
+{% extends "layout/application.html" %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-8">
+            <div class="section">
+                <h5 class="center-align">Suburbs for {{ locality_name|title }}</h5>
+                <a href="{% url 'new_suburb' %}?locality={{ locality }}&city={{ city }}&region={{ region }}" class="w3-padding btn btn-small left purple lighten-3 white-text waves-effect waves-light" id="new">New</a>
+                <a href="{% url 'index_localities' %}?city={{ city }}&region={{ region }}" class="w3-padding btn btn-small right black lighten-3 white-text waves-effect waves-light" >Back</a>
+                {#                <button#}
+                {#                        class="btn#}
+                {#                               modal-trigger#}
+                {#                                waves-effect#}
+                {#                                waves-light#}
+                {#                                purple#}
+                {#                                lighten-3#}
+                {#                                white-text#}
+                {#                               "#}
+                {#                        onclick="document.getElementById('id01').style.display='block'"#}
+                {#                >#}
+                {#                    New#}
+                {#                </button>#}
+            </div>
+            <br>
+            <div class="table-responsive">
+                <table class="table-bordered">
+                    <thead>
+                    <tr class="text-center purple lighten-4">
+                        <th>S/N</th>
+                        <th>Suburb</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th colspan="2">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% if not suburbs.exists %}
+                        <tr>
+                            <td><p class="text-center w3-text-red">No Suburbs Available for {{ locality_name|title }}</p></td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            {% for suburb in suburbs %}
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ suburb.suburb_name|title }}</td>
+                                <td>
+                                    {% if suburb.status %}
+                                        Active
+                                    {% else %}
+                                        Inactive
+                                    {% endif %}
+                                </td>
+                                <td>{{ suburb.created_at|date:'Y-m-d H:i' }}</td>
+                                <td>
+                                    <a href="{% url 'edit_suburb' suburb.ref %}?locality={{ locality }}&city={{ city }}&region={{ region }}"> Edit</a>
+                                </td>
+
+                                <td>
+                                    <a
+                                        href="{% url 'delete_suburb' suburb.ref %}?locality={{ locality }}&city={{ city }}&region={{ region }}"
+                                        onclick="return confirm('Do you want to continue?')"
+                                    > Delete
+                                    </a>
+                                </td>
+                                </tr>
+                            {% endfor %}
+                    {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascript %}
+    <script>
+        {#$("#new").click(function (e) {#}
+        {#    console.log("We are going oooo");#}
+        {#    e.preventDefault();#}
+        {#    $.ajax({#}
+        {#        type:'GET',#}
+        {#        data: {#}
+        {#            'ref_id': 'remy',#}
+        {#        },#}
+        {#        url: {% url 'new_city' %},#}
+        {#        success:function(resp) {#}
+        {#            window.location.href = "{% url 'new_city' %}"#}
+        {#        }#}
+        {#    });#}
+        {#});#}
+    </script>
+{% endblock %}
