@@ -42,7 +42,11 @@ INSTALLED_APPS = [
     'city',
     'locality',
     'suburb',
+    'user',
 ]
+
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

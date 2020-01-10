@@ -41,12 +41,12 @@ def city_already_exist(value):
 
 def locality_already_exist(value):
     print('value value => ' + value)
-    locality = Locality.objects.filter(locality_name__iexact=value, status=True).exists()
-    if not locality:
-        return value
-    else:
+    locality = Locality.objects.filter(locality_name__iexact=value, status=True)
+
+    if locality.exists():
         raise ValidationError(_("Locality already exist"))
 
+    return  value
 
 def suburb_already_exist(value):
     print('value value => ' + value)

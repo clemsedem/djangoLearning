@@ -77,6 +77,7 @@ def edit(request, ref):
     return render(request, 'city/edit.html', context)
 
 
+
 # def create(request):
 #     form_data = CityForm(request.POST)
 #     ref = request.POST['ref']
