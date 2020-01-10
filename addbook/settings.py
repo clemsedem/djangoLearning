@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'city',
     'locality',
     'suburb',
-    'user',
 ]
 
 
